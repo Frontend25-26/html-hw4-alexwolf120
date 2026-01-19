@@ -1,0 +1,127 @@
+$primary-color: #ff6b9d;
+$secondary-color: #4facfe;
+$accent-color: #ffa500;
+
+$card-radius: 20px;
+$transition-speed: 0.3s;
+
+$shadow-sm: 0 8px 25px rgba(0, 0, 0, 0.12);
+$shadow-md: 0 10px 30px rgba(0, 0, 0, 0.15);
+$shadow-lg: 0 15px 40px rgba(0, 0, 0, 0.25);
+
+$text-dark: #2d3748;
+$text-muted: #4a5568;
+
+$karamelka-primary: #ff3385;
+$karamelka-secondary: #ff66a3;
+$karamelka-bg-start: #ffe6f2;
+$karamelka-bg-end: #ffcce6;
+$karamelka-border: #ff99cc;
+
+@mixin button-base {
+  flex: 1;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all $transition-speed ease;
+  position: relative;
+  overflow: hidden;
+}
+
+@mixin hover-lift($shadow-color) {
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px $shadow-color;
+  }
+}
+
+@mixin card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.5s ease;
+}
+
+.scss-card {
+  background: linear-gradient(135deg, $karamelka-bg-start 0%, $karamelka-bg-end 100%);
+  border-radius: $card-radius;
+  overflow: hidden;
+  box-shadow: $shadow-md;
+  transition: all $transition-speed ease;
+  height: 100%;
+  border: 3px solid $karamelka-border;
+
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: $shadow-lg;
+  }
+
+  &__header {
+    position: relative;
+    overflow: hidden;
+    height: 250px;
+    background: $karamelka-bg-start;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__image {
+    @include card-image;
+
+    .scss-card:hover & {
+      transform: scale(1.05);
+    }
+  }
+
+  &__body {
+    padding: 24px;
+  }
+
+  &__title {
+    font-size: 26px;
+    font-weight: 800;
+    color: $karamelka-primary;
+    margin-bottom: 8px;
+  }
+
+  &__age {
+    color: $karamelka-secondary;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  &__description {
+    color: $text-muted;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 12px;
+  }
+
+  &__button {
+    @include button-base;
+
+    &--like {
+      background: linear-gradient(135deg, $karamelka-secondary 0%, $karamelka-primary 100%);
+      color: white;
+      @include hover-lift(rgba(255, 51, 133, 0.4));
+    }
+
+    &--pet {
+      background: linear-gradient(135deg, #ffb3d1 0%, #ff99c2 100%);
+      color: $text-dark;
+      @include hover-lift(rgba(255, 153, 194, 0.4));
+    }
+  }
+}
+
+@function lighten-color($color, $amount) {
+  @return lighten($color, $amount);
+}
