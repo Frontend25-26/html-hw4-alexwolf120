@@ -31,13 +31,23 @@ body {
   margin-bottom: 50px;
 }
 
-.likes-count {
-  display: inline-block;
-  background: rgba(255, 255, 255, 0.3);
-  padding: 2px 8px;
-  border-radius: 12px;
-  margin-left: 4px;
-  font-size: 0.9em;
+.cards-container {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.card-wrapper {
+  flex: 1;
+  min-width: 300px;
+  max-width: 400px;
+}
+
+.bootstrap-wrapper {
+  display: block;
 }
 
 .css-card {

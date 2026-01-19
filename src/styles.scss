@@ -125,21 +125,3 @@ $karamelka-border: #ff99cc;
 @function lighten-color($color, $amount) {
   @return lighten($color, $amount);
 }
-
-.scss-card {
-  @media (max-width: 768px) {
-    &__title {
-      font-size: 22px;
-    }
-  }
-
-  @media (max-width: 480px) {
-    &__title {
-      font-size: 20px;
-    }
-    
-    &__body {
-      padding: 20px;
-    }
-  }
-}
